@@ -5113,7 +5113,7 @@
       </Placemark>
       <Placemark>
         <name>JA-0152</name>
-        <description><![CDATA[日本語名: 日豊海岸国定公園<br>name: Nippo Kaigan<br>location: Oita<br>latitude: 33.254949<br>longitude: 131.526283<br>parkType: Nature Park]]></description>
+        <description><![CDATA[日本語名: 日豊海岸国定公園<br>name: Nippo Kaigan<br>location: Oita<br>latitude: 33.19661<br>longitude: 131.857224<br>parkType: Nature Park]]></description>
         <styleUrl>#icon-961-DB4436-labelson</styleUrl>
         <ExtendedData>
           <Data name="日本語名">
@@ -5126,10 +5126,10 @@
             <value>Oita</value>
           </Data>
           <Data name="latitude">
-            <value>33.254949</value>
+            <value>33.19661</value>
           </Data>
           <Data name="longitude">
-            <value>131.526283</value>
+            <value>131.857224</value>
           </Data>
           <Data name="parkType">
             <value>Nature Park</value>
@@ -5137,13 +5137,13 @@
         </ExtendedData>
         <Point>
           <coordinates>
-            131.526283,33.254949,0
+            131.857224,33.19661,0
           </coordinates>
         </Point>
       </Placemark>
       <Placemark>
         <name>JA-0152</name>
-        <description><![CDATA[日本語名: 日豊海岸国定公園<br>name: Nippo Kaigan<br>location: Miyazaki<br>latitude: 33.254949<br>longitude: 131.526283<br>parkType: Nature Park]]></description>
+        <description><![CDATA[日本語名: 日豊海岸国定公園<br>name: Nippo Kaigan<br>location: Miyazaki<br>latitude: 33.102249<br>longitude: 131.89383<br>parkType: Nature Park]]></description>
         <styleUrl>#icon-961-DB4436-labelson</styleUrl>
         <ExtendedData>
           <Data name="日本語名">
@@ -5156,10 +5156,10 @@
             <value>Miyazaki</value>
           </Data>
           <Data name="latitude">
-            <value>33.254949</value>
+            <value>33.102249</value>
           </Data>
           <Data name="longitude">
-            <value>131.526283</value>
+            <value>131.89383</value>
           </Data>
           <Data name="parkType">
             <value>Nature Park</value>
@@ -5167,7 +5167,7 @@
         </ExtendedData>
         <Point>
           <coordinates>
-            131.526283,33.254949,0
+            131.89383,33.102249,0
           </coordinates>
         </Point>
       </Placemark>

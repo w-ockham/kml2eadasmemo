@@ -42,7 +42,7 @@ with open(kml_file) as f:
 if (summit_db != ''):
     conn_summit = sqlite3.connect(summit_db)
     cur_summit = conn_summit.cursor()
-    for s in cur_summit.execute('select * from summits'):
+    for s in cur_summit.execute('select * from ja_summits'):
         (code,lat,lon,pt,alt,_,_,name,_) = s
         x,y = pyproj.transform(EPSG4612, EPSG3857, lon,lat)
         print(sotaformat % (str(x), str(y), str(x), str(y),code + ' ' +name))

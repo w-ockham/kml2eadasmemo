@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import codecs
+import csv
 import pyproj
 from pykml import parser
 import sys
@@ -21,29 +22,40 @@ if (argc < 2):
     print('Usage command kml-file sqlitedb-file')
     sys.exit(1)
 elif (argc == 2):
-    kml_file = sys.argv[1]
+    potafile = sys.argv[1]
     summit_db=''
 else:
-    kml_file = sys.argv[1]
+    potafile = sys.argv[1]
     summit_db= sys.argv[2]
 
 print('[')
 
-with open(kml_file) as f:
-    root = parser.parse(f).getroot()
-    for pm in root.Document.Folder.Placemark:
-        name = pm.name + pm.ExtendedData.Data[0].value
-        lat = pm.ExtendedData.Data[3].value
-        lon = pm.ExtendedData.Data[4].value
-        x,y = pyproj.transform(EPSG4612, EPSG3857, lon,lat)
-        print(potaformat % (str(x), str(y),  name))
-        print(',')
+with codecs.open(potafile) as f:
+    if '.kml' in potafile:
+        root = parser.parse(f).getroot()
+        for pm in root.Document.Folder.Placemark:
+            name = pm.name + pm.ExtendedData.Data[0].value
+            lat = pm.ExtendedData.Data[3].value
+            lon = pm.ExtendedData.Data[4].value
+            x,y = pyproj.transform(EPSG4612, EPSG3857, lon,lat)
+            print(potaformat % (str(x), str(y),  name))
+            print(',')
+    elif '.csv' in potafile:
+        reader = csv.reader(f)
+        for row in reader:
+            row = [codecs.decode(s, 'utf_8') for s in row]
+            name = row[0] + row[1]
+            lat = row[4]
+            lon = row[5]
+            x,y = pyproj.transform(EPSG4612, EPSG3857, lon,lat)
+            print(potaformat % (str(x), str(y),  name))
+            print(',')
 
 if (summit_db != ''):
     conn_summit = sqlite3.connect(summit_db)
     cur_summit = conn_summit.cursor()
-    for s in cur_summit.execute('select * from summits'):
-        (code,lat,lon,pt,alt,_,_,name,_) = s
+    for s in cur_summit.execute("select * from summits where code like 'JA/%' or code like 'JA_/%'"):
+        (code,lat,lon,pt,bp,altm,_,name,_,_,_,_,_,_,_) = s
         x,y = pyproj.transform(EPSG4612, EPSG3857, lon,lat)
         print(sotaformat % (str(x), str(y), str(x), str(y),code + ' ' +name))
         print(',')
